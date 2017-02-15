@@ -11,6 +11,7 @@ export class TodoComponent
 {
   public todoList: Array<Todo>;
   public newTodo: string;
+  public todoCount: number;
 
   constructor(public navCtrl: NavController)
   {
@@ -30,8 +31,16 @@ export class TodoComponent
       todoThree
     ];
 
+    this.countTodos();
+
     this.newTodo = "";
   }
+
+
+public countTodos()
+{
+  this.todoCount = this.todoList.length;
+}
 
 /**
  * Get todo's from server
@@ -44,6 +53,8 @@ export class TodoComponent
     let todoThree = new Todo("Make dinner", "Ramen Noodles");
 
     this.todoList = [ todoThree, todoTwo ];
+
+    this.countTodos();
   }
 
   public createTodo()
@@ -58,6 +69,8 @@ export class TodoComponent
       this.todoList.push(newTodo);
 
       this.newTodo = "";
+
+      this.countTodos();
     }
   }
 }
