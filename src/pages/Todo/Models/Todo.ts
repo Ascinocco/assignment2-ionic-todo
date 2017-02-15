@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 export class Todo
 {
   public title: string;

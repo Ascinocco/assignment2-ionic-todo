@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Todo } from './Models/Todo';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'todo-list',
@@ -9,31 +10,35 @@ import { Todo } from './Models/Todo';
 
 export class TodoComponent
 {
-  public todoList: Array<Todo>;
+  public todoList: any;
   public newTodo: string;
   public todoCount: number;
+  private db: any;
 
-  constructor(public navCtrl: NavController)
+  constructor(public navCtrl: NavController, af: AngularFire)
   {
     //temp mock data
-    let todoOne = new Todo("Buy Iphone", "Use the sale at bestbuy");
-    let todoTwo = new Todo("Buy new Mac");
-    let todoThree = new Todo("Make dinner", "Ramen Noodles");
+    // let todoOne = new Todo("Buy Iphone", "Use the sale at bestbuy");
+    // let todoTwo = new Todo("Buy new Mac");
+    // let todoThree = new Todo("Make dinner", "Ramen Noodles");
+    //
+    // todoThree.complete = true;
+    // todoOne.id = "1";
+    // todoTwo.id = "2";
+    // todoThree.id = "3";
+    //
+    // this.todoList = [
+    //   todoOne,
+    //   todoTwo,
+    //   todoThree
+    // ];
 
-    todoThree.complete = true;
-    todoOne.id = "1";
-    todoTwo.id = "2";
-    todoThree.id = "3";
-
-    this.todoList = [
-      todoOne,
-      todoTwo,
-      todoThree
-    ];
+    this.todoList = af.database.list('/todos');
 
     this.countTodos();
-
     this.newTodo = "";
+
+
   }
 
 
@@ -60,13 +65,18 @@ public countTodos()
   public createTodo()
   {
     if(this.newTodo.length > 0) {
+
+      // let todoRef = this.db.ref("todos");
+
       console.log(this.newTodo);
 
       var newTodo = new Todo(this.newTodo);
 
+      this.todoList.push(newTodo);
+
       // upload to db
       // should really be a fetch so that we can get id
-      this.todoList.push(newTodo);
+      // this.todoList.push(newTodo);
 
       this.newTodo = "";
 
