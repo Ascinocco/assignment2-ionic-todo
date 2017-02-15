@@ -3,7 +3,10 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Todoloo! How many todo's do you have to do? {{ todoCount }}</ion-title>
+    <ion-title>Todoloo!</ion-title>
+    <ion-buttons end>
+      <h6 class="todo-count">How many todo's do you have to do? &nbsp; <ion-badge color="danger">{{ todoCount }}</ion-badge></h6>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
