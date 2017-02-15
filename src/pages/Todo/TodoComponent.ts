@@ -10,10 +10,10 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 export class TodoComponent
 {
-  public todoList: any;
+  public todoList: FirebaseListObservable<any[]>;
   public newTodo: string;
   public todoCount: number;
-  private db: any;
+  private db: FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController, af: AngularFire)
   {
@@ -32,8 +32,12 @@ export class TodoComponent
     //   todoTwo,
     //   todoThree
     // ];
+    this.db = af.database.list('/todos');
+
+
 
     this.todoList = af.database.list('/todos');
+    // this.fetchTodos();
 
     this.countTodos();
     this.newTodo = "";
@@ -44,7 +48,7 @@ export class TodoComponent
 
 public countTodos()
 {
-  this.todoCount = this.todoList.length;
+  // this.todoCount = this.todoList.length;
 }
 
 /**
@@ -54,10 +58,14 @@ public countTodos()
   public fetchTodos()
   {
     // get todo from server
-    let todoTwo = new Todo("Buy new Mac");
-    let todoThree = new Todo("Make dinner", "Ramen Noodles");
+    // let todoTwo = new Todo("Buy new Mac");
+    // let todoThree = new Todo("Make dinner", "Ramen Noodles");
+    //
+    // this.todoList = [ todoThree, todoTwo ];
 
-    this.todoList = [ todoThree, todoTwo ];
+    // this.db.once('value').then(function(snapshot) {
+    //   console.log(snapshot);
+    // })
 
     this.countTodos();
   }
@@ -72,7 +80,7 @@ public countTodos()
 
       var newTodo = new Todo(this.newTodo);
 
-      this.todoList.push(newTodo);
+      this.db.push(newTodo);
 
       // upload to db
       // should really be a fetch so that we can get id
@@ -80,6 +88,7 @@ public countTodos()
 
       this.newTodo = "";
 
+      this.fetchTodos();
       this.countTodos();
     }
   }
