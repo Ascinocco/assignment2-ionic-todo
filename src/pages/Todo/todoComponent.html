@@ -26,7 +26,7 @@
     <ion-row *ngIf="todo.showDetails">
       <ion-col>
         <ion-label class="todo-label">Title</ion-label>
-        <ion-input type="text" [(ngModel)]="todo.title"></ion-input>
+        <ion-input type="text" [(ngModel)]="todo.title" (blur)="todo.update()"></ion-input>
       </ion-col>
     </ion-row>
 
@@ -34,8 +34,8 @@
       <ion-col>
         <ion-label class="todo-label">Notes</ion-label>
 
-        <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" rows="2"></ion-textarea>
-        <ion-textarea *ngIf="todo.notes.length <= 0" [(ngModel)]="todo.notes" placeholder="Add notes here!" rows="2"></ion-textarea>
+        <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" (blur)="todo.update()" rows="2"></ion-textarea>
+        <ion-textarea *ngIf="todo.notes.length <= 0" [(ngModel)]="todo.notes" (blur)="todo.update()" placeholder="Add notes here!" rows="2"></ion-textarea>
       </ion-col>
     </ion-row>
 
@@ -47,7 +47,7 @@
       </ion-row>
     </a>
 
-    <a *ngIf="todo.showDetails" (click)="todo.hideDetails(); todo.update($event)">
+    <a *ngIf="todo.showDetails" (click)="todo.hideDetails();">
       <hr class="todo-hr" />
       <ion-row>
         <ion-col center text-center class="todo-slimCol">
