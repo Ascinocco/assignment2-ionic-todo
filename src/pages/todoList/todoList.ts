@@ -17,12 +17,16 @@ export class TodoList
     let todoTwo = new Todo("Buy new Mac");
     let todoThree = new Todo("Make dinner", "Ramen Noodles");
 
-    this.todoList.push(todoOne);
-    this.todoList.push(todoTwo);
-    this.todoList.push(todoThree);
+    todoThree.complete = true;
+    todoOne.id = "1";
+    todoTwo.id = "2";
+    todoThree.id = "3";
+
+    this.todoList = [
+      todoOne,
+      todoTwo,
+      todoThree
+    ];
   }
-
-  
-
 
 }
