@@ -10,6 +10,7 @@ import { Todo } from './Models/Todo';
 export class TodoComponent
 {
   public todoList: Array<Todo>;
+  public newTodo: string;
 
   constructor(public navCtrl: NavController)
   {
@@ -28,13 +29,35 @@ export class TodoComponent
       todoTwo,
       todoThree
     ];
+
+    this.newTodo = "";
   }
 
-  public fetchTodos() {
+/**
+ * Get todo's from server
+ * @return {[type]} [description]
+ */
+  public fetchTodos()
+  {
     // get todo from server
     let todoTwo = new Todo("Buy new Mac");
     let todoThree = new Todo("Make dinner", "Ramen Noodles");
 
     this.todoList = [ todoThree, todoTwo ];
+  }
+
+  public createTodo()
+  {
+    if(this.newTodo.length > 0) {
+      console.log(this.newTodo);
+
+      var newTodo = new Todo(this.newTodo);
+
+      // upload to db
+      // should really be a fetch so that we can get id
+      this.todoList.push(newTodo);
+
+      this.newTodo = "";
+    }
   }
 }

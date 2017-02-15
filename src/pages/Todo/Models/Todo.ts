@@ -7,6 +7,12 @@ export class Todo
 
   public showDetails: boolean;
 
+  /**
+   * I can remove notes from the constructor after done mocking
+   * @param  {string} title [description]
+   * @param  {string} notes [description]
+   * @return {[type]}       [description]
+   */
   constructor(title: string, notes?: string)
   {
     if (notes) {
