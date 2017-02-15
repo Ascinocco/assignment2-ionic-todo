@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Todo } from '../../Models/Todo';
+import { Todo } from './Models/Todo';
 
 @Component({
   selector: 'todo-list',
-  templateUrl: 'todoList.html'
+  templateUrl: 'todoComponent.html'
 })
 
-export class TodoList
+export class TodoComponent
 {
   public todoList: Array<Todo>;
 
@@ -28,5 +28,4 @@ export class TodoList
       todoThree
     ];
   }
-
 }
