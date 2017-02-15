@@ -9,6 +9,68 @@
 
 
 <ion-content>
+
+  <ion-card *ngFor="let todo of todoList">
+    <ion-row>
+      <ion-col width-10>
+          <ion-checkbox [(ngModel)]="todo.complete" (click)="todo.update()" class="todo-checkBox" name="complete"></ion-checkbox>
+      </ion-col>
+
+      <ion-col width-90>
+        <ion-label>{{ todo.title }}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <hr class="todo-hr" />
+
+    <ion-row *ngIf="todo.showDetails">
+      <ion-col>
+        <ion-label class="todo-label">Title</ion-label>
+        <ion-input type="text" [(ngModel)]="todo.title"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="todo.showDetails">
+      <ion-col>
+        <ion-label class="todo-label">Notes</ion-label>
+
+        <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" rows="2"></ion-textarea>
+        <ion-textarea *ngIf="todo.notes.length <= 0" [(ngModel)]="todo.notes" placeholder="Add notes here!" rows="2"></ion-textarea>
+      </ion-col>
+    </ion-row>
+
+    <a *ngIf="!todo.showDetails" (click)="todo.displayDetails()">
+      <ion-row>
+        <ion-col center text-center class="todo-slimCol">
+            <ion-icon ios="md-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </a>
+
+    <a *ngIf="todo.showDetails" (click)="todo.hideDetails(); todo.update($event)">
+      <hr class="todo-hr" />
+      <ion-row>
+        <ion-col center text-center class="todo-slimCol">
+          <ion-icon ios="md-arrow-dropup" md="md-arrow-dropup"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </a>
+
+  </ion-card>
+
+
+
+<!--
+
+
+        NgIf ***************
+
+-->
+
+
+<br />
+<br />
+<br />
   <ion-card *ngFor="let todo of todoList">
 
     <ion-row>
@@ -53,7 +115,7 @@
     </a>
 
     <!-- Dropup Button -->
-    <a *ngIf="todo.showDetails" (click)="todo.hideDetails()">
+    <a *ngIf="todo.showDetails" (click)="todo.hideDetails(); todo.update($event)">
       <hr class="todo-hr" />
       <ion-row>
         <ion-col center text-center class="todo-slimCol">

@@ -13,6 +13,7 @@ export class TodoComponent
 
   constructor(public navCtrl: NavController)
   {
+    //temp mock data
     let todoOne = new Todo("Buy Iphone", "Use the sale at bestbuy");
     let todoTwo = new Todo("Buy new Mac");
     let todoThree = new Todo("Make dinner", "Ramen Noodles");

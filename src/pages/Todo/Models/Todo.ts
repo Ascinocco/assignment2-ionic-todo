@@ -41,13 +41,8 @@ export class Todo
    * update my details
    * @return {[type]} [description]
    */
-  public update(todo: Todo)
+  public update()
   {
-    this.title = todo.title;
-    this.notes = todo.notes;
-    this.complete = todo.complete;
-
-    //maybe validation or casting here
-    // push to server here
+    console.log(this);
   }
 }
