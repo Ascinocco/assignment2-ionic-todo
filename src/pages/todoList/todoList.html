@@ -10,7 +10,7 @@
 
 <ion-content>
 
-<!-- With Hidden Content -->
+<!-- Without Hidden Content -->
   <ion-card>
     <!-- Todo -->
     <ion-row>
@@ -27,8 +27,31 @@
 
     <!-- Dropdown Button -->
     <ion-row>
-      <ion-col center text-center style="padding: 0; margin: 0;">
+      <ion-col center text-center class="todo-slimCol">
         <ion-icon ios="md-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+<!-- Todo with hidden content -->
+  <ion-card>
+    <!-- Todo -->
+    <ion-row>
+      <ion-col width-10>
+        <ion-checkbox class="todo-checkBox"></ion-checkbox>
+      </ion-col>
+      <ion-col width-90>
+        <ion-label>Buy Screen Protector</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <!--Divider-->
+    <hr class="todo-hr" />
+
+    <!-- Dropdown Button -->
+    <ion-row>
+      <ion-col center text-center class="todo-slimCol">
+        <ion-icon ios="md-arrow-dropup" md="md-arrow-dropup"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-card>
