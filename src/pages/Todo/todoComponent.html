@@ -16,8 +16,14 @@
           <ion-checkbox [(ngModel)]="todo.complete" (click)="todo.update()" class="todo-checkBox" name="complete"></ion-checkbox>
       </ion-col>
 
-      <ion-col width-90>
+      <ion-col width-80>
         <ion-label>{{ todo.title }}</ion-label>
+      </ion-col>
+
+      <ion-col width-10>
+        <button ion-button small outline color="dark" (click)="todo.delete(); fetchTodos();">
+          <ion-icon name="trash"></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
 

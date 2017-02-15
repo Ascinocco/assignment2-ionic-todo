@@ -29,4 +29,12 @@ export class TodoComponent
       todoThree
     ];
   }
+
+  public fetchTodos() {
+    // get todo from server
+    let todoTwo = new Todo("Buy new Mac");
+    let todoThree = new Todo("Make dinner", "Ramen Noodles");
+
+    this.todoList = [ todoThree, todoTwo ];
+  }
 }

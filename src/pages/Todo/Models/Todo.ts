@@ -45,4 +45,17 @@ export class Todo
   {
     console.log(this);
   }
+
+  /**
+   * Delete me from the db
+   * @return {[type]} [description]
+   */
+  public delete()
+  {
+    this.id           = null;
+    this.title        = null;
+    this.notes        = null;
+    this.complete     = null;
+    this.showDetails  = null;
+  }
 }
