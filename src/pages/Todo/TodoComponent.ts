@@ -13,11 +13,12 @@ export class TodoComponent
   public todoList: FirebaseListObservable<any[]>;
   public newTodo: string;
   public todoCount: number;
-  //private db: FirebaseListObservable<any[]>;
+  public displayComplete: boolean;
 
   constructor(public navCtrl: NavController, af: AngularFire)
   {
     this.todoList = af.database.list('/todos');
+    this.displayComplete = false;
     this.newTodo  = "";
   }
 

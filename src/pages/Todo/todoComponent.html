@@ -10,60 +10,59 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content>
   <ion-card *ngFor="let todo of todoList | async">
-    <ion-row>
-      <ion-col width-10>
+    <div *ngIf="!todo.complete">
+      <ion-row>
+        <ion-col width-10>
           <ion-checkbox [(ngModel)]="todo.complete" (click)="updateTodo(todo)" class="todo-checkBox" name="complete"></ion-checkbox>
-      </ion-col>
+        </ion-col>
 
-      <ion-col width-80>
-        <ion-label>{{ todo.title }}</ion-label>
-      </ion-col>
+        <ion-col width-80>
+          <ion-label>{{ todo.title }}</ion-label>
+        </ion-col>
 
-      <ion-col width-10>
-        <button ion-button small outline color="dark" (click)="deleteTodo(todo)">
+        <ion-col width-10>
+          <button ion-button small outline color="dark" (click)="deleteTodo(todo)">
           <ion-icon name="trash"></ion-icon>
         </button>
-      </ion-col>
-    </ion-row>
-
-    <hr class="todo-hr" />
-
-    <ion-row *ngIf="todo.show">
-      <ion-col>
-        <ion-label class="todo-label">Title</ion-label>
-        <ion-input type="text" [(ngModel)]="todo.title" (blur)="updateTodo(todo)"></ion-input>
-      </ion-col>
-    </ion-row>
-
-    <ion-row *ngIf="todo.show">
-      <ion-col>
-        <ion-label class="todo-label">Notes</ion-label>
-
-        <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" rows="2"></ion-textarea>
-        <ion-textarea *ngIf="todo.notes.length <= 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" placeholder="Add notes here!" rows="2"></ion-textarea>
-      </ion-col>
-    </ion-row>
-
-    <a *ngIf="!todo.show" (click)="todo.show = true">
-      <ion-row>
-        <ion-col center text-center class="todo-slimCol">
-            <ion-icon ios="md-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
         </ion-col>
       </ion-row>
-    </a>
 
-    <a *ngIf="todo.show" (click)="todo.show = false">
       <hr class="todo-hr" />
-      <ion-row>
-        <ion-col center text-center class="todo-slimCol">
-          <ion-icon ios="md-arrow-dropup" md="md-arrow-dropup"></ion-icon>
+
+      <ion-row *ngIf="todo.show">
+        <ion-col>
+          <ion-label class="todo-label">Title</ion-label>
+          <ion-input type="text" [(ngModel)]="todo.title" (blur)="updateTodo(todo)"></ion-input>
         </ion-col>
       </ion-row>
-    </a>
 
+      <ion-row *ngIf="todo.show">
+        <ion-col>
+          <ion-label class="todo-label">Notes</ion-label>
+          <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" rows="2"></ion-textarea>
+          <ion-textarea *ngIf="todo.notes.length <= 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" placeholder="Add notes here!" rows="2"></ion-textarea>
+        </ion-col>
+      </ion-row>
+
+      <a *ngIf="!todo.show" (click)="todo.show = true">
+        <ion-row>
+          <ion-col center text-center class="todo-slimCol">
+            <ion-icon ios="md-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </a>
+
+      <a *ngIf="todo.show" (click)="todo.show = false">
+        <hr class="todo-hr" />
+        <ion-row>
+          <ion-col center text-center class="todo-slimCol">
+            <ion-icon ios="md-arrow-dropup" md="md-arrow-dropup"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </a>
+    </div>
   </ion-card>
 
   <!-- Create new todo -->
@@ -79,5 +78,26 @@
         </button>
       </ion-col>
     </ion-row>
+  </ion-card>
+
+  <ion-row>
+    <ion-col width-33></ion-col>
+    <ion-col width-33>
+      <ion-label text-center>Completed Todo's</ion-label>
+    </ion-col>
+  </ion-row>
+
+  <ion-card *ngFor="let todo of todoList | async">
+    <div *ngIf="todo.complete">
+      <ion-row>
+        <ion-col width-10>
+          <ion-checkbox class="todo-checkBox" checked disabled></ion-checkbox>
+        </ion-col>
+
+        <ion-col width-90>
+          <ion-label class="todo-complete">{{ todo.title }}</ion-label>
+        </ion-col>
+      </ion-row>
+    </div>
   </ion-card>
 </ion-content>
