@@ -31,20 +31,22 @@
 
       <hr class="todo-hr" />
 
-      <ion-row *ngIf="todo.show">
-        <ion-col>
-          <ion-label class="todo-label">Title</ion-label>
-          <ion-input type="text" [(ngModel)]="todo.title" (blur)="updateTodo(todo)"></ion-input>
-        </ion-col>
-      </ion-row>
+      <div *ngIf="todo.show">
+        <ion-row>
+          <ion-col>
+            <ion-label class="todo-label">Title</ion-label>
+            <ion-input type="text" [(ngModel)]="todo.title"></ion-input>
+          </ion-col>
+        </ion-row>
 
-      <ion-row *ngIf="todo.show">
-        <ion-col>
-          <ion-label class="todo-label">Notes</ion-label>
-          <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" rows="2"></ion-textarea>
-          <ion-textarea *ngIf="todo.notes.length <= 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" placeholder="Add notes here!" rows="2"></ion-textarea>
-        </ion-col>
-      </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label class="todo-label">Notes</ion-label>
+            <!-- <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" rows="2"></ion-textarea> -->
+            <ion-textarea [(ngModel)]="todo.notes" placeholder="Add notes here!" rows="2"></ion-textarea>
+          </ion-col>
+        </ion-row>
+      </div>
 
       <a *ngIf="!todo.show" (click)="todo.show = true">
         <ion-row>
@@ -57,8 +59,9 @@
       <a *ngIf="todo.show" (click)="todo.show = false">
         <hr class="todo-hr" />
         <ion-row>
-          <ion-col center text-center class="todo-slimCol">
+          <ion-col center text-center class="todo-slimCol" (click)="updateTodo(todo)">
             <ion-icon ios="md-arrow-dropup" md="md-arrow-dropup"></ion-icon>
+            (update)
           </ion-col>
         </ion-row>
       </a>
