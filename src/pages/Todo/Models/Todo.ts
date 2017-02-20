@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 export class Todo
 {

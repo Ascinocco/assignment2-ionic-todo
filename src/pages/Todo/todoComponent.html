@@ -13,6 +13,7 @@
 
 <ion-content>
   <ion-card *ngFor="let todo of todoList | async">
+    
     <ion-row>
       <ion-col width-10>
           <ion-checkbox [(ngModel)]="todo.complete" (click)="todo.update()" class="todo-checkBox" name="complete"></ion-checkbox>
