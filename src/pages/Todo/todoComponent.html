@@ -42,7 +42,6 @@
         <ion-row>
           <ion-col>
             <ion-label class="todo-label">Notes</ion-label>
-            <!-- <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" rows="2"></ion-textarea> -->
             <ion-textarea [(ngModel)]="todo.notes" placeholder="Add notes here!" rows="2"></ion-textarea>
           </ion-col>
         </ion-row>
@@ -50,7 +49,7 @@
 
       <a *ngIf="!todo.show" (click)="todo.show = true">
         <ion-row>
-          <ion-col center text-center class="todo-slimCol">
+          <ion-col center text-center class="todo-slimCol" (click)="storeData(todo.title, todo.notes)">
             <ion-icon ios="md-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
           </ion-col>
         </ion-row>
@@ -59,9 +58,12 @@
       <a *ngIf="todo.show" (click)="todo.show = false">
         <hr class="todo-hr" />
         <ion-row>
-          <ion-col center text-center class="todo-slimCol" (click)="updateTodo(todo)">
-            <ion-icon ios="md-arrow-dropup" md="md-arrow-dropup"></ion-icon>
-            (update)
+          <ion-col center text-center class="todo-slimCol" width-10>
+            <button ion-button small outline (click)="updateTodo(todo)">update</button>
+          </ion-col>
+          <ion-col width-80></ion-col>
+          <ion-col width-10 class="todo-slimCol" (click)="cancel(todo)">
+            <button ion-button small outline color="danger">cancel</button>
           </ion-col>
         </ion-row>
       </a>
