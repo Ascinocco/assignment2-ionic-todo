@@ -4,11 +4,8 @@ export class Todo
 {
   public title: string;
   public notes: string;
-  public _id: string;
-  public id: string;
   public complete: boolean;
-
-  public showDetails: boolean;
+  public show: boolean;
 
   /**
    * I can remove notes from the constructor after done mocking
@@ -16,7 +13,7 @@ export class Todo
    * @param  {string} notes [description]
    * @return {[type]}       [description]
    */
-  constructor(title: string, notes?: string)
+  constructor(title: string, notes?: string, show?: boolean)
   {
     if (notes) {
       this.notes = notes;
@@ -24,25 +21,13 @@ export class Todo
       this.notes = "";
     }
 
+    if (show) {
+      this.show = show;
+    } else {
+      this.show = false;
+    }
+
     this.title = title;
     this.complete = false;
-  }
-
-  /**
-   * Show my details
-   * @return {[type]} [description]
-   */
-  public displayDetails()
-  {
-    this.showDetails = true;
-  }
-
-  /**
-   * Hide my details
-   * @return {[type]} [description]
-   */
-  public hideDetails()
-  {
-    this.showDetails = false;
   }
 }

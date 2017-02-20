@@ -31,14 +31,14 @@
 
     <hr class="todo-hr" />
 
-    <ion-row *ngIf="todo.showDetails">
+    <ion-row *ngIf="todo.show">
       <ion-col>
         <ion-label class="todo-label">Title</ion-label>
         <ion-input type="text" [(ngModel)]="todo.title" (blur)="todo.update()"></ion-input>
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="todo.showDetails">
+    <ion-row *ngIf="todo.show">
       <ion-col>
         <ion-label class="todo-label">Notes</ion-label>
 
@@ -47,7 +47,7 @@
       </ion-col>
     </ion-row>
 
-    <a *ngIf="!todo.showDetails" (click)="todo.displayDetails()">
+    <a *ngIf="!todo.show" (click)="todo.show = true">
       <ion-row>
         <ion-col center text-center class="todo-slimCol">
             <ion-icon ios="md-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
@@ -55,7 +55,7 @@
       </ion-row>
     </a>
 
-    <a *ngIf="todo.showDetails" (click)="todo.hideDetails();">
+    <a *ngIf="todo.show" (click)="todo.show = false">
       <hr class="todo-hr" />
       <ion-row>
         <ion-col center text-center class="todo-slimCol">
@@ -65,8 +65,6 @@
     </a>
 
   </ion-card>
-
-
 
   <!-- Create new todo -->
   <ion-card>
