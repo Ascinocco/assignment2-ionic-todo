@@ -13,7 +13,6 @@
 
 <ion-content>
   <ion-card *ngFor="let todo of todoList | async">
-    
     <ion-row>
       <ion-col width-10>
           <ion-checkbox [(ngModel)]="todo.complete" (click)="todo.update()" class="todo-checkBox" name="complete"></ion-checkbox>
@@ -24,7 +23,7 @@
       </ion-col>
 
       <ion-col width-10>
-        <button ion-button small outline color="dark" (click)="todo.delete(); fetchTodos();">
+        <button ion-button small outline color="dark" (click)="deleteTodo(todo)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-col>

@@ -4,6 +4,7 @@ export class Todo
 {
   public title: string;
   public notes: string;
+  public _id: string;
   public id: string;
   public complete: boolean;
 
@@ -43,27 +44,5 @@ export class Todo
   public hideDetails()
   {
     this.showDetails = false;
-  }
-
-  /**
-   * update my details
-   * @return {[type]} [description]
-   */
-  public update()
-  {
-    console.log(this);
-  }
-
-  /**
-   * Delete me from the db
-   * @return {[type]} [description]
-   */
-  public delete()
-  {
-    this.id           = null;
-    this.title        = null;
-    this.notes        = null;
-    this.complete     = null;
-    this.showDetails  = null;
   }
 }
