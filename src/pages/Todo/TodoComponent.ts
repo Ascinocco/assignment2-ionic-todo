@@ -30,6 +30,15 @@ export class TodoComponent
     }
   }
 
+  public updateTodo(todo)
+  {
+    this.todoList.update(todo.$key, {
+      title: todo.title,
+      notes: todo.notes,
+      complete: todo.complete
+    })
+  }
+
   public deleteTodo(todo)
   {
     this.todoList.remove(todo);

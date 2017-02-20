@@ -15,7 +15,7 @@
   <ion-card *ngFor="let todo of todoList | async">
     <ion-row>
       <ion-col width-10>
-          <ion-checkbox [(ngModel)]="todo.complete" (click)="todo.update()" class="todo-checkBox" name="complete"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="todo.complete" (click)="updateTodo(todo)" class="todo-checkBox" name="complete"></ion-checkbox>
       </ion-col>
 
       <ion-col width-80>
@@ -34,7 +34,7 @@
     <ion-row *ngIf="todo.show">
       <ion-col>
         <ion-label class="todo-label">Title</ion-label>
-        <ion-input type="text" [(ngModel)]="todo.title" (blur)="todo.update()"></ion-input>
+        <ion-input type="text" [(ngModel)]="todo.title" (blur)="updateTodo(todo)"></ion-input>
       </ion-col>
     </ion-row>
 
@@ -42,8 +42,8 @@
       <ion-col>
         <ion-label class="todo-label">Notes</ion-label>
 
-        <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" (blur)="todo.update()" rows="2"></ion-textarea>
-        <ion-textarea *ngIf="todo.notes.length <= 0" [(ngModel)]="todo.notes" (blur)="todo.update()" placeholder="Add notes here!" rows="2"></ion-textarea>
+        <ion-textarea *ngIf="todo.notes.length > 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" rows="2"></ion-textarea>
+        <ion-textarea *ngIf="todo.notes.length <= 0" [(ngModel)]="todo.notes" (blur)="updateTodo(todo)" placeholder="Add notes here!" rows="2"></ion-textarea>
       </ion-col>
     </ion-row>
 
