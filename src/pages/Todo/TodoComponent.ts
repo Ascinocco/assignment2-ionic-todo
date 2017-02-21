@@ -24,11 +24,19 @@ export class TodoComponent
 
   constructor(public navCtrl: NavController, af: AngularFire)
   {
+    // pull in list of todos
     this.todoList = af.database.list('/todos');
     this.displayComplete = false;
     this.newTodo  = "";
   }
 
+  /**
+   * Stores todo data temporarily so that original todo details can be stored iif
+   * cancel button is pressed
+   * @param  {[type]} title [description]
+   * @param  {[type]} notes [description]
+   * @return {[type]}       [description]
+   */
   public storeData(title, notes)
   {
     this.tempTitle = "";
@@ -37,12 +45,21 @@ export class TodoComponent
     this.tempNotes = notes;
   }
 
+  /**
+   * Reset todo details
+   * @param  {[type]} todo [description]
+   * @return {[type]}      [description]
+   */
   public cancel(todo)
   {
     todo.title = this.tempTitle;
     todo.notes = this.tempNotes;
   }
 
+  /**
+   * Create todo, save it in fire base
+   * @return {[type]} [description]
+   */
   public createTodo()
   {
     if(this.newTodo.length > 0) {
@@ -52,6 +69,11 @@ export class TodoComponent
     }
   }
 
+  /**
+   * update todo based on $key in firebase
+   * @param  {[type]} todo [description]
+   * @return {[type]}      [description]
+   */
   public updateTodo(todo)
   {
     this.todoList.update(todo.$key, {
@@ -61,6 +83,11 @@ export class TodoComponent
     })
   }
 
+  /**
+   * delete todo from firebase 
+   * @param  {[type]} todo [description]
+   * @return {[type]}      [description]
+   */
   public deleteTodo(todo)
   {
     this.todoList.remove(todo);

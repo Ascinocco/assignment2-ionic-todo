@@ -13,7 +13,7 @@ export class Todo
   public show: boolean;
 
   /**
-   * I can remove notes from the constructor after done mocking
+   * Models Todo
    * @param  {string} title [description]
    * @param  {string} notes [description]
    * @return {[type]}       [description]
