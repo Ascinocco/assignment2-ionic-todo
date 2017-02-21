@@ -1,3 +1,9 @@
+/**
+ * app.component.ts
+ * Anthony Scinocco 200271982
+ * Base component defining Todo applicaton
+ */
+
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';

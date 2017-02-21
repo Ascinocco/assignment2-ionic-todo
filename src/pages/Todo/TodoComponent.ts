@@ -1,3 +1,9 @@
+/**
+ * TodoComponent.ts
+ * Anthony Scinocco 200271982
+ * Hanles application logic. Takes care of building page and handling operations
+ */
+
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Todo } from './Models/Todo';

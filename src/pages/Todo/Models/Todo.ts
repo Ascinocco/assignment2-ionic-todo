@@ -1,4 +1,9 @@
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+/**
+ * Todo.ts
+ * Anthony Scinocco 200271982
+ * Handles modeling a Todo. Not really transferable to Firebase observable object type
+ * Also contains some presentation logic
+ */
 
 export class Todo
 {

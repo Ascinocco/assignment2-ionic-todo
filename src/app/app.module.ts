@@ -1,3 +1,9 @@
+/**
+ * app.module.ts
+ * Anthony Scinocco 200271982
+ * Base module, holds firebase config and bootstraps TodoComponent
+ */
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
