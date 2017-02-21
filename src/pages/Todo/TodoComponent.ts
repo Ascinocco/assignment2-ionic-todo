@@ -11,9 +11,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class TodoComponent
 {
   public todoList: FirebaseListObservable<any[]>;
-  public todoListCopy: FirebaseListObservable<any[]>;
   public newTodo: string;
-  public todoCount: number;
   public displayComplete: boolean;
   public tempTitle: string;
   public tempNotes: string;
@@ -21,7 +19,6 @@ export class TodoComponent
   constructor(public navCtrl: NavController, af: AngularFire)
   {
     this.todoList = af.database.list('/todos');
-    this.todoListCopy = af.database.list('/todos');
     this.displayComplete = false;
     this.newTodo  = "";
   }
